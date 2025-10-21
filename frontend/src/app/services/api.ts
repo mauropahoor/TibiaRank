@@ -14,7 +14,7 @@ export class Api {
 
   constructor() { }
 
-  public getChar(): Observable<Char[]> {
-    return this.http.get<Char[]>(`${this.apiUrl}/char`);
+  public getChar(char: String): Observable<Char> {
+    return this.http.get<Char>(`${this.apiUrl}/external/character/${char}`);
   }
 }

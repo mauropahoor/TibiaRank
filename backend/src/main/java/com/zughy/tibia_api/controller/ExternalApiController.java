@@ -4,9 +4,9 @@ import com.zughy.tibia_api.dto.Char;
 import com.zughy.tibia_api.service.TibiaApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/external")
@@ -19,8 +19,10 @@ public class ExternalApiController {
         this.tibiaApiService = tibiaApiService;
     }
 
-    @GetMapping("/characters")
-    public List<Char> fetchCharacters() {
-        return tibiaApiService.getExternalCharacters();
+   @GetMapping("/character/{name}")
+    public Char fetchCharacter(
+        @PathVariable("name") String characterName
+    ) {
+        return tibiaApiService.getCharacterByName(characterName);
     }
 }

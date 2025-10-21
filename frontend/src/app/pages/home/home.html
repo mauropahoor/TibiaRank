@@ -1,12 +1,13 @@
-<ul>
-  @for (char of chars; track char.name) {
+@if (character) {
+  <ul>
     <li>
-        <strong>Name:</strong> {{ char.name }} <br>
-        <strong>Level:</strong> {{ char.level }} <br>
-        <strong>Vocation:</strong> {{ char.vocation }} <br>
-        <strong>World:</strong> {{ char.world }} <br>
-        <strong>Residence:</strong> {{ char.residence }} <br>
+      <strong>Name:</strong> {{ character.character.name }} <br>
+      <strong>Level:</strong> {{ character.character.level }} <br>
+      <strong>Vocation:</strong> {{ character.character.vocation }} <br>
+      <strong>World:</strong> {{ character.character.world }} <br>
+      <strong>Residence:</strong> {{ character.character.residence }} <br>
     </li>
-  }
-</ul>
-yrdyrd
+  </ul>
+} @else if (isLoading) {
+  <p>Carregando...</p>
+}
