@@ -5,14 +5,13 @@ import { forkJoin, Observable } from 'rxjs'; // Importe o forkJoin!
 
 // Imports de Serviços e Modelos
 import { Api } from '@services/api';
-import { CharacterData, Char } from '@interfaces/char.model';
+import { CharacterData, Char, CharacterDetails } from '@interfaces/char.model';
 
 import { CharacterCardComponent } from '@components/character-card/character-card';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  // 1. ADICIONE O NOVO COMPONENTE AQUI
   imports: [CommonModule, CharacterCardComponent], 
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -22,13 +21,11 @@ export class Home {
   private api = inject(Api); 
   private cdr = inject(ChangeDetectorRef);
 
-  // 2. MUDAMOS DE UM OBJETO PARA UM VETOR
   public characters: CharacterData[] = []; 
   public isLoading = true;
   public error: string | null = null;
 
-  // 3. ESTE AGORA É UM VETOR DE NOMES
-  charNames = ['Monst Sane', 'Palli Zughy', 'Veyllor']; // Adicione os nomes que desejar
+  charNames = ['Monst Sane', 'Palli Zughy', 'Royal Neves', 'Mirtina', 'Druid Campos', 'Bill Wood'];
 
   constructor() {
     afterNextRender(() => {
@@ -37,20 +34,15 @@ export class Home {
   }
 
   fetchRanking(): void {
-    // 4. CRIA UM VETOR DE "PROMESAS" (OBSERVABLES)
-    // Para cada nome no vetor 'charNames', ele chama a API
     const fetchObservables: Observable<Char>[] = this.charNames.map(name => {
-      // (Assumindo que 'getChar' é seu método que busca por nome)
       return this.api.getChar(name); 
     });
 
-    // 5. USA 'forkJoin' PARA EXECUTAR TODAS AS CHAMADAS EM PARALELO
     forkJoin(fetchObservables).subscribe({
       next: (responses: Char[]) => {
         console.log('Respostas recebidas:', responses);
         
-        // Extraímos o '.character' de cada resposta
-        this.characters = responses.map(res => res.character);
+        this.characters = this.mergeSort(responses.map(res => res.character));
         this.isLoading = false;
         this.cdr.markForCheck();
       },
@@ -61,5 +53,35 @@ export class Home {
         this.cdr.markForCheck();
       }
     });
+  }
+
+  mergeSort(array: any[]): any[] {
+    if (array.length <= 1) {
+        return array;
+    }
+    const middle = Math.floor(array.length / 2);
+    const leftHalf = array.slice(0, middle);
+    const rightHalf = array.slice(middle);
+    return this.merge(this.mergeSort(leftHalf), this.mergeSort(rightHalf));
+  }
+
+  merge(left: CharacterData[], right: CharacterData[]): CharacterData[] {
+      let result: any[] = [];
+      let leftIndex = 0;
+      let rightIndex = 0;
+
+      while (leftIndex < left.length &&
+          rightIndex < right.length) {
+          if (left[leftIndex].character.level > right[rightIndex].character.level) {
+              result.push(left[leftIndex]);
+              leftIndex++;
+          } else {
+              result.push(right[rightIndex]);
+              rightIndex++;
+          }
+      }
+
+      return result.concat(left.slice(leftIndex)).
+          concat(right.slice(rightIndex));
   }
 }
