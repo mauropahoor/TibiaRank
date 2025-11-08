@@ -1,0 +1,27 @@
+.ranking-header {
+  /* Layout com Flexbox */
+  display: flex;
+  align-items: center;      /* Alinha o ícone e o texto verticalmente */
+  justify-content: left;  /* Centraliza o bloco de ícone+texto */
+
+  /* O fundo solicitado */
+  background-image: url('https://static.tibia.com/images/global/content/cacheinfo_background.gif');
+  background-repeat: repeat-x; /* O gif é uma faixa que se repete lado a lado */
+  background-position: center;
+  
+}
+
+.header-icon {
+  /* O ícone original é 68x68, vamos diminuir um pouco */
+  width: 32px; 
+  height: 32px;
+  margin-right: 1rem; /* Espaçamento entre o ícone e o texto */
+}
+
+.header-title {
+  font-family: var(--font-titulo); /* 'Cinzel' */
+  color: var(--cor-titulo); /* Cor marrom-escura */
+  font-size: 0.9rem; /* Tamanho do título */
+  margin: 0; /* Remove a margem padrão do h2 */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* Sombra leve no texto */
+}

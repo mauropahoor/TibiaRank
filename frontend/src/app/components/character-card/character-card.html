@@ -1,0 +1,24 @@
+@if (character) {
+  <div class="character-sheet">
+    <h2>
+      <p [routerLink]="['/character', character.character.name]">
+        {{ character.character.name }}
+      </p>
+    </h2>
+    
+    <p>
+      Level {{ character.character.level }} 
+      - {{ character.character.vocation }}
+    </p>
+    <p><strong>Mundo:</strong> {{ character.character.world }}</p>
+    <p><strong>Residência:</strong> {{ character.character.residence }}</p>
+    
+    @if (character.character.guild) {
+      <p><strong>Guild:</strong> {{ character.character.guild.name }}</p>
+    } @else {
+      <p><strong>Guild:</strong> Sem guild</p>
+    }
+  </div>
+} @else {
+  <p>Carregando card...</p>
+}

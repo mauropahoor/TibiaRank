@@ -1,13 +1,18 @@
-@if (character) {
-  <ul>
-    <li>
-      <strong>Name:</strong> {{ character.character.name }} <br>
-      <strong>Level:</strong> {{ character.character.level }} <br>
-      <strong>Vocation:</strong> {{ character.character.vocation }} <br>
-      <strong>World:</strong> {{ character.character.world }} <br>
-      <strong>Residence:</strong> {{ character.character.residence }} <br>
-    </li>
-  </ul>
-} @else if (isLoading) {
-  <p>Carregando...</p>
+<div class="ranking-header">
+  <img src="https://static.tibia.com/images/global/content/newsicon_community_big.png" alt="Ranking Icon" class="header-icon">
+  <h2 class="header-title">Ranking de Characters</h2>
+</div>
+
+@if (isLoading) {
+  <p>Carregando ranking...</p>
+} 
+@else if (error) {
+  <p style="color: red;">{{ error }}</p>
+} 
+@else {
+  <div class="ranking-list">
+    @for (char of characters; track $index) {
+      <app-character-card [character]="char"></app-character-card>
+    }
+  </div>
 }

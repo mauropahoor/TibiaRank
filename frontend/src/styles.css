@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Merriweather&display=swap');
+
+/* Definindo nossas cores e fontes como variáveis CSS */
+:root {
+  --font-titulo: 'Cinzel', serif;
+  --font-corpo: 'Merriweather', serif;
+  
+  --cor-titulo: white;
+  --cor-fundo-pedra: #051122;
+  --cor-pergaminho: #f5e8c8;
+  --cor-texto-escuro: #3c2b1b;
+  --cor-borda-escura: #5a3a1a;
+  --cor-destaque: #b4783c;
+}
+
+body {
+  background-color: var(--cor-fundo-pedra);
+  background-image: url('https://static.tibia.com/images/global/header/background-artwork.webp');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+/* Estilo padrão dos títulos */
+h1, h2, h3 {
+  font-family: var(--font-titulo);
+  color: var(--cor-borda-escura);
+}

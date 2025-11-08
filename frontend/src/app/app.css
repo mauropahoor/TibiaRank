@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  text-align: center;
+}
+
+.site-header h1 {
+  color: var(--cor-pergaminho);
+  text-shadow: 2px 2px 4px #000;
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
+/* Esta é a nossa caixa principal de pergaminho */
+.content-scroll {
+  display: block;
+  max-width: 960px; /* Largura fixa, como o site do Tibia */
+  margin: 1rem auto; /* Centraliza na página */
+
+  /* A textura do pergaminho */
+  background-color: var(--cor-pergaminho);
+  background-image: url('/assets/images/parchment-texture.png');
+
+  /* A borda "entalhada" */
+  border: 5px solid var(--cor-borda-escura);
+  padding: 2rem;
+
+  /* Efeito de profundidade e sombra interna */
+  box-shadow: 0 0 20px rgba(0,0,0,0.7), 
+              inset 0 0 15px rgba(0,0,0,0.4);
+
+  /* Arredondar cantos (opcional, Tibia usa cantos retos) */
+  border-radius: 3px;
+}
+
+.site-footer {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-top: 2rem;
+}

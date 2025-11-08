@@ -1,0 +1,18 @@
+/* O container da "ficha" do personagem */
+.character-sheet {
+  text-align: left;
+  border-bottom: 2px solid var(--cor-borda-escura);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.character-sheet h2 {
+  color: var(--cor-destaque);
+  font-size: 2rem;
+  margin: 0;
+}
+
+.character-sheet p {
+  line-height: 1.6;
+  margin: 0.5rem 0;
+}
