@@ -57,7 +57,7 @@ O frontend é a interface com o usuário que consome os dados do *nosso* backend
 
 2.  Se você usa NVM, ative a versão correta do Node.js:
     ```bash
-    nvm use 18
+    nvm use 22
     ```
 
 3.  Instale as dependências do projeto (só é necessário na primeira vez):
