@@ -18,7 +18,7 @@
 
   /* A textura do pergaminho */
   background-color: var(--cor-pergaminho);
-  background-image: url('/assets/images/parchment-texture.png');
+  background-image: url('https://cdn.pixabay.com/photo/2015/12/03/08/50/paper-1074131_1280.jpg');
 
   /* A borda "entalhada" */
   border: 5px solid var(--cor-borda-escura);
