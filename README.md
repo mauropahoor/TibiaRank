@@ -1,6 +1,6 @@
 # 🛡️ TibiaRank
 
-O TibiaRank é uma aplicação web full-stack para exibir e ranquear personagens dos meus amigos no Tibia.
+O TibiaRank é uma aplicação web para exibir e ranquear personagens dos meus amigos no Tibia.
 
 Este projeto é um **monorepo** que contém:
 * Um **backend** em **Spring Boot** que atua como um proxy, buscando dados da API TibiaData.
