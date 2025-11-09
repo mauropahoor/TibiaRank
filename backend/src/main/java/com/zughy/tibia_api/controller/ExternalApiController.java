@@ -3,6 +3,7 @@ package com.zughy.tibia_api.controller;
 import com.zughy.tibia_api.dto.Char;
 import com.zughy.tibia_api.service.TibiaApiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/external")
+@CrossOrigin(origins = "https://mauropahoor.github.io")
 public class ExternalApiController {
 
     private final TibiaApiService tibiaApiService;
