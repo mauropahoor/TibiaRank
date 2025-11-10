@@ -1,44 +1,32 @@
-# Nome da sua Ação (vai aparecer na aba "Actions" do GitHub)
 name: Deploy Angular App to GitHub Pages
 
-# Quando esta Ação deve rodar?
 on:
-  # Roda toda vez que você der 'push' na branch 'main'
   push:
     branches:
       - main
 
-# O que esta Ação deve fazer?
 jobs:
   build-and-deploy:
-    # O tipo de máquina que vai rodar o código
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Baixa o seu código (do push) para a máquina virtual
       - name: Checkout
         uses: actions/checkout@v3
 
-      # 2. Configura o Node.js v18 (o mesmo que você usa)
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 22
 
-      # 3. Roda os comandos de build (na pasta do frontend)
       - name: Build Angular App
         run: |
           cd frontend
           npm install
           npx ng build --configuration=production --base-href /TibiaRank/
       
-      # 4. Envia os arquivos construídos para a branch 'gh-pages'
-      # Esta é a ferramenta que substitui o 'angular-cli-ghpages'
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          # O token de autenticação (fornecido automaticamente pelo GitHub)
           github_token: ${{ secrets.GITHUB_TOKEN }}
           
-          # O diretório que o 'ng build' criou (relativo à raiz)
           publish_dir: ./frontend/dist/frontend/browser
